@@ -3,7 +3,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 
 # Функция для команды /start
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text('Hello, this is your meme bot!')
+    await update.message.reply_text('Привет! Кидай мемчик. Босс проверит и опубликует!')
 
 # Основная функция, которая запускает бота
 def main():
