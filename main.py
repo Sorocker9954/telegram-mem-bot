@@ -1,19 +1,20 @@
-from telegram import Bot
-from telegram.ext import CommandHandler, Updater
+from telegram import Update
+from telegram.ext import Application, CommandHandler, ContextTypes
 
-def start(update, context):
-    update.message.reply_text('Hello, this is your meme bot!')
+# Функция для команды /start
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text('Hello, this is your meme bot!')
 
+# Основная функция, которая запускает бота
 def main():
-    bot = Bot(token='7216283940:AAFB1h9Otl8NhC19ElPvpKmzCsVs8QMOsos')
-    updater = Updater(token='7216283940:AAFB1h9Otl8NhC19ElPvpKmzCsVs8QMOsos', use_context=True)
-    dispatcher = updater.dispatcher
+    # Указываем токен и создаём приложение (бота)
+    application = Application.builder().token('7216283940:AAFB1h9Otl8NhC19ElPvpKmzCsVs8QMOsos').build()
 
-    start_handler = CommandHandler('start', start)
-    dispatcher.add_handler(start_handler)
+    # Регистрируем обработчик команды /start
+    application.add_handler(CommandHandler("start", start))
 
-    updater.start_polling()
-    updater.idle()
+    # Запускаем бота
+    application.run_polling()
 
 if __name__ == '__main__':
     main()
