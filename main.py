@@ -14,7 +14,7 @@ async def handle_meme(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.photo:
         photo_file = update.message.photo[-1].file_id  # Получаем файл с последним размером фото
         memes_to_moderate.append(photo_file)  # Сохраняем мем в список для модерации
-        await update.message.reply_text(f'Мем получен! ID фото: {photo_file}. Он на модерации.')
+        await update.message.reply_text(f'Мем получен! Он на модерации.')
 
 # Функция для публикации мемов в канал (после модерации)
 async def publish_meme(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -28,7 +28,7 @@ async def publish_meme(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # Команда для публикации мемов (только для тебя, как админа)
 async def admin_publish(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Проверяем, что пользователь админ (например, по ID)
-    if update.message.from_user.id == @dsn9954:  # Заменить на твой ID
+    if update.message.from_user.id == 909526370:  # Заменить на твой ID
         await publish_meme(update, context)
     else:
         await update.message.reply_text('У вас нет прав для публикации мемов.')
